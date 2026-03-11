@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-slate-950 text-slate-100;
+  min-width: 360px;
+}
+
+.card {
+  @apply rounded-2xl bg-slate-900 p-4 shadow-lg border border-slate-800;
+}

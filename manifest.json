@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "FocusIsland",
+  "description": "Productivity extension with Pomodoro, site tracking, focus blocking, and Firebase sync.",
+  "version": "1.0.0",
+  "action": {
+    "default_title": "FocusIsland",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "service_worker": "background/serviceWorker.js",
+    "type": "module"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "alarms",
+    "notifications",
+    "declarativeNetRequest",
+    "activeTab",
+    "idle",
+    "identity"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/floatingTimer.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["assets/*", "auth/blocked.html", "assets/sound.mp3"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  }
+}
